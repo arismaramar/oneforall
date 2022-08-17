@@ -9,12 +9,14 @@ YELLOW="\033[33m"   # Warning message
 BLUE="\033[36m"     # Info message
 PLAIN='\033[0m'
 
-apt install jq aptitude apt-get -y
-aptitude  install jq -y
-apt-get install jq -y
+apt install jq aptitude apt-get  dnsutils -y
+aptitude  install jq dnsutils -y
+apt-get install jq dnsutils -y
+apt install dnsutils -y
 
-yum install epel-release -y
-yum install jq -y
+
+yum install epel-release dnsutils  -y
+yum install jq dnsutils -y
 
 
 
@@ -214,7 +216,8 @@ getData() {
             KEY_FILE="/etc/trojan-go/${DOMAIN}.key"
         else
 #            resolve=`curl -sL https://hijk.art/hostip.php?d=${DOMAIN}`
-            resolve=`curl -sL ipget.net/?ip=${DOMAIN}`    
+#            resolve=`curl -sL ipget.net/?ip=${DOMAIN}`    
+             resolve="$(dig +short ${DOMAIN} @1.1.1.1)"
             res=`echo -n ${resolve} | grep ${IP}`
             if [[ -z "${res}" ]]; then
                 echo " ${DOMAIN} 解析结果：${resolve}"

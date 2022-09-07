@@ -6,6 +6,12 @@ echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/hijkclub"
 Red_font_prefix="\033[31m"
 Font_color_suffix="\033[0m"
 
+
+apt install -y  aptitude apt-get  jq  dnsutils wget curl
+aptitude  install  -y  jq  dnsutils wget curl   
+apt-get  -y install  jq  dnsutils wget curl   
+
+
  
 
 trojan='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/trojan-go.sh)'

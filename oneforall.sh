@@ -11,6 +11,9 @@ apt install -y  aptitude apt-get  jq  dnsutils wget curl sudo
 aptitude  install  -y  jq  dnsutils wget curl   sudo
 apt-get  -y install  jq  dnsutils wget curl    sudo 
 
+dnf install -y bind-utils 
+yum install -y bind-utils 
+
 
  
 

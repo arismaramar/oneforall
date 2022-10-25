@@ -847,8 +847,10 @@ installV2ray() {
     mkdir -p '/etc/v2ray' '/var/log/v2ray' && \
     unzip /tmp/v2ray/v2ray.zip -d /tmp/v2ray
     mkdir -p /usr/bin/v2ray
-    cp /tmp/v2ray/v2ctl /usr/bin/v2ray/; cp /tmp/v2ray/v2ray /usr/bin/v2ray/; cp /tmp/v2ray/geo* /usr/bin/v2ray/;
-    chmod +x '/usr/bin/v2ray/v2ray' '/usr/bin/v2ray/v2ctl' || {
+  #  cp /tmp/v2ray/v2ctl /usr/bin/v2ray/;
+    cp /tmp/v2ray/v2ray /usr/bin/v2ray/; cp /tmp/v2ray/geo* /usr/bin/v2ray/;
+#    chmod +x '/usr/bin/v2ray/v2ray' '/usr/bin/v2ray/v2ctl' || {
+ chmod +x '/usr/bin/v2ray/v2ray'  || {
         colorEcho $RED " V2ray安装失败"
         exit 1
     }
@@ -869,7 +871,7 @@ Type=simple
 User=root
 #User=nobody
 NoNewPrivileges=true
-ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/config.json
+ExecStart=/usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json
 Restart=on-failure
 
 [Install]

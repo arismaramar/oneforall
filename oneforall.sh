@@ -28,7 +28,7 @@ while true
 do
 read  -p "$(echo -e "请选择
 
-${Red_font_prefix}1${Font_color_suffix} trojan to install
+${Red_font_prefix}1${Font_color_suffix} trojan-go to install
 ${Red_font_prefix}2${Font_color_suffix} v2ray to install
 ${Red_font_prefix}3${Font_color_suffix} xray to install
 

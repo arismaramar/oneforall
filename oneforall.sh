@@ -21,6 +21,7 @@ trojan='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/onef
 
 v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/v2ray.sh)'
 
+xray='bash <(curl -sL https://raw.githubusercontent.com/daveleung/hijkpw-scripts-mod/main/xray_mod1.sh)'
 
 
 while true
@@ -29,12 +30,14 @@ read  -p "$(echo -e "请选择
 
 ${Red_font_prefix}1${Font_color_suffix} trojan to install
 ${Red_font_prefix}2${Font_color_suffix} v2ray to install
+${Red_font_prefix}3${Font_color_suffix} xray to install
 
 \r\n
 ")" choose
 	case $choose in
 		1) eval $trojan  ;;
 		2) eval $v2ray ;;
+		3) eval $xray ;;
 	 
 		*) echo "wrong input" ;;
 	esac

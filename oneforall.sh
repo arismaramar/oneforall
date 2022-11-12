@@ -7,9 +7,9 @@ echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk)"
 echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/hijkclub"
 
 
-apt install -y  aptitude apt-get  jq  dnsutils wget curl sudo 
+apt install -y  aptitude apt-get  jq  dnsutils wget curl sudo  >/dev/null 2>&1
 aptitude  install  -y  jq  dnsutils wget curl   sudo >/dev/null 2>&1
-apt-get  -y install  jq  dnsutils wget curl    sudo  >/dev/null 2>&1
+apt-get  -y install  jq  dnsutils wget curl    sudo  
 
 dnf install -y bind-utils  >/dev/null 2>&1
 yum install -y bind-utils >/dev/null 2>&1

@@ -85,7 +85,7 @@ read -p "监听端口,默认12345:" ListenPort6
 
 
 
-read -p "default（默认bbr）:bbr/bbr2:" bbrbbr2
+read -p "拥塞控制加速bbr/bbr2（默认bbr）:" bbrbbr2
     if   [[ -z "$bbrbbr2" ]]; then
             bbrbbr2="bbr"
 

@@ -34,7 +34,7 @@ ${Red_font_prefix}1${Font_color_suffix} trojan-go 建议
 ${Red_font_prefix}2${Font_color_suffix} v2ray 
 ${Red_font_prefix}3${Font_color_suffix} xray  （选择多）
 ${Red_font_prefix}4${Font_color_suffix} hysteria 速度快，建议
-${Red_font_prefix}5${Font_color_suffix} tuic 不QoS的网络 上网/刷视频快
+${Red_font_prefix}5${Font_color_suffix} tuic 没有UDP QoS的网络 上网/刷视频快
 
 \r\n
 ")" choose

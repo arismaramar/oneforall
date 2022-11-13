@@ -16,16 +16,12 @@ dnf install -y bind-utils  >/dev/null 2>&1
 yum install -y bind-utils >/dev/null 2>&1
 
 
- 
-
 trojan='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/trojan-go.sh)'
-
 v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/v2ray.sh)'
 tuic='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/tuic.sh)'
 curl -s --max-time 10 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Foneforallofall%2Fcount&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" | tail -3 | head -n 1 | awk '{print $5,$7}' >/dev/null 2>&1
 xray='bash <(curl -sL https://raw.githubusercontent.com/daveleung/hijkpw-scripts-mod/main/xray_mod1.sh)'
 hysteria='bash <(curl -fsSL https://git.io/hysteria.sh)'
-
 IO='wget -qO- git.io/superbench.sh | bash'
 back_route='curl https://raw.githubusercontent.com/zhanghanyun/backtrace/main/install.sh -sSf | sh'
 back_route_de='wget -qO- git.io/besttrace | bash'

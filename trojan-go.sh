@@ -29,6 +29,10 @@ if [[ "$?" != "0" ]]; then
     V6_PROXY="https://gh.hijk.art/"
 fi
 
+IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
+IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
+
+
 BT="false"
 NGINX_CONF_PATH="/etc/nginx/conf.d/"
 
@@ -217,13 +221,31 @@ getData() {
         else
 #            resolve=`curl -sL https://hijk.art/hostip.php?d=${DOMAIN}`
 #            resolve=`curl -sL ipget.net/?ip=${DOMAIN}`    
-             resolve="$(dig +short ${DOMAIN} @1.1.1.1)"
-            res=`echo -n ${resolve} | grep ${IP}`
+
+
+             #resolve="$(dig +short ${DOMAIN} @1.1.1.1)"
+
+             resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
+             resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
+
+            #res=`echo -n ${resolve} | grep ${IP}`
+            #if [[ -z "${res}" ]]; then
+            #    echo " ${DOMAIN} 解析结果：${resolve}"
+            #    echo -e " ${RED}伪装域名未解析到当前服务器IP(${IP})!${PLAIN}"
+            #    exit 1
+            #fi
+
+            res4=`echo -n ${resolve4} | grep $IPV4`
+            res6=`echo -n ${resolve6} | grep $IPV6`
+	    res=`echo $res4$res6`
+echo "${DOMAIN}  points to: $res"
             if [[ -z "${res}" ]]; then
                 echo " ${DOMAIN} 解析结果：${resolve}"
                 echo -e " ${RED}伪装域名未解析到当前服务器IP(${IP})!${PLAIN}"
                 exit 1
             fi
+
+
         fi
     else
         DOMAIN=`grep sni $CONFIG_FILE | cut -d\" -f4`

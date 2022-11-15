@@ -241,7 +241,7 @@ getData() {
 echo "${DOMAIN}  points to: $res"
             if [[ -z "${res}" ]]; then
                 echo " ${DOMAIN} 解析结果：${resolve}"
-                echo -e " ${RED}伪装域名未解析到当前服务器IP(${IP})!${PLAIN}"
+                echo -e " ${RED}伪装域名未解析到当前服务器IP${IPV4 $IPV6} !${PLAIN}"
                 exit 1
             fi
 

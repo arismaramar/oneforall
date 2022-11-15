@@ -291,12 +291,13 @@ resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
 res4=`echo -n ${resolve4} | grep $IPV4`
 res6=`echo -n ${resolve6} | grep $IPV6`
 res=`echo $res4$res6`
+IP=`echo $res4$res6`
+
 echo "${DOMAIN}  points to: $res"
 
-
             if [[ -z "${res}" ]]; then
-                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
-                colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
+                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${res}"
+                colorEcho ${RED}  " 域名未解析到当前服务器IP$IPV$$IPV6 !"
                 exit 1
             fi
         fi
@@ -567,9 +568,17 @@ getCert() {
         ~/.acme.sh/acme.sh  --upgrade  --auto-upgrade
         ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
         if [[ "$BT" = "false" ]]; then
+	   if [[ ! -z "${IPV4}" ]]; then
             ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "systemctl stop nginx" --post-hook "systemctl restart nginx"  --standalone
+	   else
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "systemctl stop nginx" --post-hook "systemctl restart nginx"  --standalone --listen-v6
+           fi
         else
+		if [[ ! -z "${IPV4}" ]]; then	
             ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone
+                else
+            ~/.acme.sh/acme.sh   --issue -d $DOMAIN --keylength ec-256 --pre-hook "nginx -s stop || { echo -n ''; }" --post-hook "nginx -c /www/server/nginx/conf/nginx.conf || { echo -n ''; }"  --standalone --listen-v6
+		fi 
         fi
         [[ -f ~/.acme.sh/${DOMAIN}_ecc/ca.cer ]] || {
             colorEcho $RED " 获取证书失败，请复制上面的红色文字到 https://hijk.art 反馈"

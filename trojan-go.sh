@@ -242,10 +242,11 @@ resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
 res4=`echo -n ${resolve4} | grep $IPV4`
 res6=`echo -n ${resolve6} | grep $IPV6`
 res=`echo $res4$res6`
-echo "${DOMAIN}  points to: $res"
+IP=`echo $res4$res6`
 
+echo "${DOMAIN}  points to: $res"
             if [[ -z "${res}" ]]; then
-                echo " ${DOMAIN} 解析结果：${resolve}"
+                echo " ${DOMAIN} 解析结果：${res}"
                 echo -e " ${RED}伪装域名未解析到当前服务器IP $IPV4$IPV6 !${PLAIN}"
                 exit 1
             fi

@@ -273,7 +273,7 @@ getData() {
         echo ""
         while true
         do
-            read -p " 请输入伪装域名：" DOMAIN
+            read -p "请输入伪装域名：" DOMAIN
             if [[ -z "${DOMAIN}" ]]; then
                 colorEcho ${RED} " 域名输入错误，请重新输入！"
             else
@@ -281,7 +281,7 @@ getData() {
             fi
         done
         DOMAIN=${DOMAIN,,}
-        colorEcho ${BLUE}  " 伪装域名(host)：$DOMAIN"
+        colorEcho ${BLUE}  "伪装域名(host)：$DOMAIN"
 
         if [[ -f ~/v2ray.pem && -f ~/v2ray.key ]]; then
             colorEcho ${BLUE}  " 检测到自有证书，将使用其部署"

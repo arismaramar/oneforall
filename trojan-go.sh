@@ -225,8 +225,8 @@ getData() {
 
              #resolve="$(dig +short ${DOMAIN} @1.1.1.1)"
 
-             resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
-             resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
+#             resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
+#             resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
 
             #res=`echo -n ${resolve} | grep ${IP}`
             #if [[ -z "${res}" ]]; then
@@ -235,10 +235,15 @@ getData() {
             #    exit 1
             #fi
 
-            res4=`echo -n ${resolve4} | grep $IPV4`
-            res6=`echo -n ${resolve6} | grep $IPV6`
-	    res=`echo $res4$res6`
+IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
+IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
+resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
+resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
+res4=`echo -n ${resolve4} | grep $IPV4`
+res6=`echo -n ${resolve6} | grep $IPV6`
+res=`echo $res4$res6`
 echo "${DOMAIN}  points to: $res"
+
             if [[ -z "${res}" ]]; then
                 echo " ${DOMAIN} 解析结果：${resolve}"
                 echo -e " ${RED}伪装域名未解析到当前服务器IP $IPV4$IPV6 !${PLAIN}"

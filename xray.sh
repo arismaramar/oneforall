@@ -273,7 +273,7 @@ getData() {
             fi
         done
         DOMAIN=${DOMAIN,,}
-        colorEcho ${BLUE}  " 伪装域名(host)：$DOMAIN"
+        colorEcho ${BLUE}  "伪装域名(host)：$DOMAIN"
 
         echo ""
         if [[ -f ~/xray.pem && -f ~/xray.key ]]; then
@@ -297,7 +297,7 @@ echo "${DOMAIN}  points to: $res"
 
             if [[ -z "${res}" ]]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${res}"
-                colorEcho ${RED}  " 域名未解析到当前服务器IP$IPV$$IPV6 !"
+                colorEcho ${RED}  " 域名未解析到当前服务器IP:$IPV4,$IPV6 !"
                 exit 1
             fi
         fi

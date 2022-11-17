@@ -5,7 +5,7 @@ Font_color_suffix="\033[0m"
 clear     
 echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk)"
 echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/hijkclub"
-echo -e "by 代码搬运工"
+#echo -e "by 代码搬运工"
 
 
 apt install -y  aptitude apt-get  jq  dnsutils wget curl sudo  >/dev/null 2>&1

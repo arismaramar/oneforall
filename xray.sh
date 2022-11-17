@@ -250,6 +250,16 @@ archAffix(){
 }
 
 getData() {
+
+IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
+IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
+resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
+resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
+res4=`echo -n ${resolve4} | grep $IPV4`
+res6=`echo -n ${resolve6} | grep $IPV6`
+res=`echo $res4$res6`
+IP=`echo $res4$res6`
+
     if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
         echo ""
         echo " Xray一键脚本，运行之前请确认如下条件已经具备："
@@ -284,14 +294,6 @@ getData() {
             resolve=`curl -sL http://ip-api.com/json/${DOMAIN}`
             res=`echo -n ${resolve} | grep ${IP}`
 
-IPV4=$(dig @1.1.1.1 +short  txt ch  whoami.cloudflare  |tr -d \")
-IPV6=$(dig +short @2606:4700:4700::1111 -6 ch txt whoami.cloudflare|tr -d \")
-resolve4="$(dig A  +short ${DOMAIN} @1.1.1.1)"
-resolve6="$(dig AAAA +short ${DOMAIN} @1.1.1.1)"
-res4=`echo -n ${resolve4} | grep $IPV4`
-res6=`echo -n ${resolve6} | grep $IPV6`
-res=`echo $res4$res6`
-IP=`echo $res4$res6`
 
 echo "${DOMAIN}  points to: $res"
 

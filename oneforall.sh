@@ -42,7 +42,7 @@ ${Red_font_prefix}6${Font_color_suffix} IO硬盘和网络速度测试
 ${Red_font_prefix}7${Font_color_suffix} 回程路由
 ${Red_font_prefix}8${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}9${Font_color_suffix} 流媒体解锁测试
-${Red_font_prefix}10${Font_color_suffix} vless xtls 下载神器跑满宽带(自己找手机网址，有可能免流 )
+${Red_font_prefix}10${Font_color_suffix} vless xtls 简单粗暴,下载神器跑满宽带(自己找手机网址，有可能免流 )
 
 \r\n
 ")" choose

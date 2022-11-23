@@ -17,6 +17,7 @@ yum install -y bind-utils >/dev/null 2>&1
 
 
 trojan='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/trojan-go.sh)'
+xray_grpc='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/xray_grpc.sh)'
 v2ray='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/v2ray.sh)'
 tuic='bash <(curl -fsSL  https://raw.githubusercontent.com/oneforallofall/oneforall/main/tuic.sh)'
 curl -s --max-time 10 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Foneforallofall%2Fcount&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" | tail -3 | head -n 1 | awk '{print $5,$7}' >/dev/null 2>&1
@@ -44,6 +45,7 @@ ${Red_font_prefix}8${Font_color_suffix} 回程路由(详细)
 ${Red_font_prefix}9${Font_color_suffix} 流媒体解锁测试
 ${Red_font_prefix}10${Font_color_suffix} vless xtls 简单粗暴,下载神器跑满宽带
   (自己找运营商免流网址，填在手机端 ，有可能免流 )
+${Red_font_prefix}11${Font_color_suffix} vless Grpc 开网页非常快 
 
 \r\n
 ")" choose
@@ -58,6 +60,7 @@ ${Red_font_prefix}10${Font_color_suffix} vless xtls 简单粗暴,下载神器跑
 		8) eval $back_route_de ;;
 		9) eval $media ;;
 		10) eval $xtls_http;;
+		11) eval $xray_grpc;;
 	 
 		*) echo "wrong input" ;;
 	esac

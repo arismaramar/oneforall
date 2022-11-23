@@ -11,7 +11,8 @@ source ~/.bashrc
 
 Get_Key_Path(){
   
-echo -e "如果~/.acme.sh下没有正确域名 ，请确保80端口没有被占用，脚本自动获取域名\n"
+echo -e "如果~/.acme.sh下没有正确的域名cer/key"
+echo -e  "请确保80端口没有被占用，脚本自动获取域名cer/key \n"
 read -p "请输入域名: " Domain
 cer_path=/root/.acme.sh/${Domain}_ecc/${Domain}.cer
 key_path=/root/.acme.sh/${Domain}_ecc/${Domain}.key
@@ -312,7 +313,7 @@ netstat  -lptnu |grep $Port
 
 }
 
-echo -e "  ${GREEN}1.${PLAIN} 安装 ${BLUE}xrayG${PLAIN}"
+echo -e "  ${GREEN}1.${PLAIN} 安装 ${BLUE}xrayGrpc${PLAIN}"
 echo -e "  ${GREEN}2.${PLAIN} 查看 ${BLUE}config${PLAIN}"
 echo -e "  ${GREEN}3.${PLAIN} restart ${BLUE}config${PLAIN}"
 echo -e "  ${GREEN}00.${PLAIN} ${BLUE}exit${PLAIN}"
